@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Wedding - Fall 2024</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #CD853F;
+            --text-dark: #4A4A4A;
+            --text-light: #F5F5DC;
+            --cream: #FAF0E6;
+            --burgundy: #8B1538;
+            --orange: #FF8C00;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #F0E68C 100%);
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Decorative elements */
+        .leaf-decoration {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 2rem;
+            color: var(--primary-color);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .leaf-decoration:nth-child(odd) {
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: -300px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            transition: left 0.3s ease;
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar.open {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .sidebar-header h2 {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-nav {
+            padding: 2rem 0;
+        }
+
+        .sidebar-nav ul {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin: 0.5rem 0;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: background 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1);
+            border-left-color: var(--text-light);
+        }
+
+        /* Menu toggle */
+        .menu-toggle {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1001;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-toggle.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 0;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .page {
+            display: none;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Landing page */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.8), transparent);
+            border-radius: 20px;
+            margin: 2rem 0;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero::before {
+            content: '🍂';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .hero::after {
+            content: '🌾';
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .wedding-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .detail-card {
+            background: rgba(255,255,255,0.9);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .detail-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--burgundy));
+        }
+
+        .detail-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .detail-card p {
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Content sections */
+        .content-section {
+            background: rgba(255,255,255,0.9);
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .content-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .content-section p {
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* PDF container */
+        .pdf-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .pdf-embed {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+
+        /* Mobile responsivity */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .page {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                margin: 1rem 0;
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .wedding-details {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pdf-embed {
+                height: 400px;
+            }
+        }
+
+        /* Autumn flower decorations */
+        .flower-decoration {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .flower-decoration.top-left {
+            top: 10%;
+            left: 5%;
+            font-size: 4rem;
+            opacity: 0.1;
+            color: var(--orange);
+        }
+
+        .flower-decoration.top-right {
+            top: 15%;
+            right: 5%;
+            font-size: 3rem;
+            opacity: 0.15;
+            color: var(--burgundy);
+        }
+
+        .flower-decoration.bottom-left {
+            bottom: 10%;
+            left: 8%;
+            font-size: 3.5rem;
+            opacity: 0.12;
+            color: var(--secondary-color);
+        }
+
+        .flower-decoration.bottom-right {
+            bottom: 15%;
+            right: 8%;
+            font-size: 2.5rem;
+            opacity: 0.1;
+            color: var(--primary-color);
+        }
+
+        /* Countdown widget */
+        .countdown-widget {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-widget::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .countdown-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-item {
+            background: rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 1rem 0.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover {
+            transform: scale(1.05);
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown-message {
+            margin-top: 1.5rem;
+            font-style: italic;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile countdown adjustments */
+        @media (max-width: 768px) {
+            .countdown-widget {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .countdown-title {
+                font-size: 1.5rem;
+            }
+
+            .countdown-container {
+                gap: 0.5rem;
+            }
+
+            .countdown-item {
+                padding: 0.8rem 0.3rem;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Couple photo styles */
+        .couple-photo-container {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .photo-frame {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .couple-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 20px;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--cream), #F0E68C);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            border: 3px dashed var(--secondary-color);
+        }
+
+        .placeholder-content {
+            text-align: center;
+            color: var(--text-dark);
+            padding: 2rem;
+        }
+
+        .placeholder-content p {
+            margin: 0.5rem 0;
+        }
+
+        .photo-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .photo-leaf {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.8;
+            animation: leafFloat 4s ease-in-out infinite;
+        }
+
+        .photo-leaf-1 {
+            top: -10px;
+            left: -10px;
+            animation-delay: 0s;
+        }
+
+        .photo-leaf-2 {
+            top: -5px;
+            right: -10px;
+            animation-delay: 1s;
+        }
+
+        .photo-leaf-3 {
+            bottom: -10px;
+            left: -5px;
+            animation-delay: 2s;
+        }
+
+        .photo-leaf-4 {
+            bottom: -5px;
+            right: -5px;
+            animation-delay: 3s;
+        }
+
+        @keyframes leafFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-10px) rotate(15deg);
+                opacity: 1;
+            }
+        }
+
+        /* Mobile photo adjustments */
+        @media (max-width: 768px) {
+            .photo-frame {
+                max-width: 300px;
+                transform: rotate(-1deg);
+            }
+
+            .photo-placeholder {
+                height: 250px;
+            }
+
+            .placeholder-content {
+                padding: 1rem;
+            }
+
+            .photo-leaf {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative elements -->
+    <div class="flower-decoration top-left">🌻</div>
+    <div class="flower-decoration top-right">🍂</div>
+    <div class="flower-decoration bottom-left">🌾</div>
+    <div class="flower-decoration bottom-right">🍁</div>
+
+    <!-- Menu toggle button -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- Overlay -->
+    <div class="overlay" onclick="closeSidebar()"></div>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Wedding Menu</h2>
+            <p style="color: var(--text-light); opacity: 0.8;">Fall 2024</p>
+        </div>
+        <div class="sidebar-nav">
+            <ul>
+                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
+                <li><a href="#" onclick="showPage('seating')">Seating</a></li>
+                <li><a href="#" onclick="showPage('accommodation')">Accommodation</a></li>
+                <li><a href="#" onclick="showPage('parking')">Parking</a></li>
+                <li><a href="#" onclick="showPage('schedule')">Schedule</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <!-- Home page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <h1>Our Wedding</h1>
+                <p class="subtitle">A Fall Celebration</p>
+                <p style="font-size: 1.2rem; color: var(--text-dark);">Join us as we celebrate our love surrounded by the beauty of autumn</p>
+            </section>
+
+            <!-- Countdown Widget -->
+            <div class="countdown-widget">
+                <h2 class="countdown-title">🍂 Until We Say "I Do" 🍂</h2>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">0</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">0</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">0</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">0</span>
+                        <span class="countdown-label">Seconds</span>
+                    </div>
+                </div>
+                <p class="countdown-message" id="countdown-message">Every moment brings us closer to our special day!</p>
+            </div>
+
+            <div class="wedding-details">
+                <div class="detail-card">
+                    <h3>📅 When</h3>
+                    <p><strong>Saturday, October 15th, 2024</strong></p>
+                    <p>Ceremony: 4:00 PM</p>
+                    <p>Reception: 6:00 PM</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3>📍 Where</h3>
+                    <p><strong>Autumn Grove Venue</strong></p>
+                    <p>123 Maple Street</p>
+                    <p>Countryside, State 12345</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3>👗 Dress Code</h3>
+                    <p><strong>Semi-Formal</strong></p>
+                    <p>Fall colors encouraged</p>
+                    <p>Outdoor ceremony - consider weather</p>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Our Story</h2>
+
+                <!-- Couple Photo Section -->
+                <div class="couple-photo-container">
+                    <div class="photo-frame">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                             alt="Our Engagement Photo"
+                             class="couple-photo"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="photo-placeholder" style="display: none;">
+                            <div class="placeholder-content">
+                                <span style="font-size: 3rem;">💕</span>
+                                <p>Your Beautiful Photo Here</p>
+                                <p style="font-size: 0.9rem; opacity: 0.7;">Replace the image URL with your engagement or couple photo</p>
+                            </div>
+                        </div>
+                        <div class="photo-decorations">
+                            <span class="photo-leaf photo-leaf-1">🍂</span>
+                            <span class="photo-leaf photo-leaf-2">🍁</span>
+                            <span class="photo-leaf photo-leaf-3">🌾</span>
+                            <span class="photo-leaf photo-leaf-4">🍂</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>We met on a crisp autumn day, and now we're celebrating our love during our favorite season. The golden leaves, warm colors, and cozy atmosphere of fall perfectly capture the warmth and joy we feel when we're together.</p>
+                <p>We can't wait to share this special day with our closest family and friends. Thank you for being part of our journey and for celebrating with us as we begin this new chapter of our lives together.</p>
+            </div>
+        </div>
+
+        <!-- Seating page -->
+        <div id="seating" class="page">
+            <div class="content-section">
+                <h2>Seating Arrangements</h2>
+                <p>We've carefully arranged the seating to ensure everyone has a wonderful time. Please find your assigned table below and look forward to meeting new friends and reconnecting with old ones.</p>
+
+                <div style="margin: 2rem 0; text-align: center;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Table Assignments</h3>
+                    <p><strong>Cocktail Hour:</strong> Open seating in the garden area</p>
+                    <p><strong>Dinner & Dancing:</strong> Assigned seating in the main hall</p>
+                </div>
+
+                <p>If you have any questions about your seating assignment or need to make special arrangements, please contact us before the wedding day. We want to ensure everyone is comfortable and can fully enjoy the celebration.</p>
+
+                <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--secondary-color);">
+                    Detailed seating chart will be displayed at the venue entrance
+                </p>
+            </div>
+        </div>
+
+        <!-- Accommodation page -->
+        <div id="accommodation" class="page">
+            <div class="content-section">
+                <h2>Accommodation</h2>
+                <p>We've reserved blocks of rooms at several nearby hotels for your convenience. Please mention our wedding when booking to receive the group rate.</p>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Recommended Hotels</h3>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Autumn Inn & Suites</strong></h4>
+                        <p>📍 456 Oak Avenue, 2 miles from venue</p>
+                        <p>📞 (555) 123-4567</p>
+                        <p>💰 $120/night (group rate)</p>
+                        <p>Includes: Complimentary breakfast, WiFi, parking</p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Countryside Lodge</strong></h4>
+                        <p>📍 789 Pine Road, 3 miles from venue</p>
+                        <p>📞 (555) 987-6543</p>
+                        <p>💰 $95/night (group rate)</p>
+                        <p>Includes: WiFi, fitness center, pool</p>
+                    </div>
+                </div>
+
+                <p><strong>Booking Deadline:</strong> September 15th, 2024</p>
+                <p><strong>Group Code:</strong> FALL2024</p>
+
+                <p style="margin-top: 2rem;">For alternative accommodations or if you need assistance with booking, please don't hesitate to reach out to us. We're happy to help make your stay as comfortable as possible.</p>
+            </div>
+        </div>
+
+        <!-- Parking page -->
+        <div id="parking" class="page">
+            <div class="content-section">
+                <h2>Parking Information</h2>
+                <p>We want to ensure everyone has convenient and safe parking for our special day. Please review the parking options below.</p>
+
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Parking Options</h3>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Main Venue Parking</strong></h4>
+                        <p>✅ Free self-parking</p>
+                        <p>📍 Adjacent to the venue building</p>
+                        <p>🚗 150 spaces available</p>
+                        <p><em>Recommended for elderly guests and those with mobility concerns</em></p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Overflow Parking</strong></h4>
+                        <p>✅ Free self-parking</p>
+                        <p>📍 2-minute walk to venue (shuttle available)</p>
+                        <p>🚗 200 additional spaces</p>
+                        <p><em>Well-lit pathway with signage</em></p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Valet Service</strong></h4>
+                        <p>💰 $15 per vehicle</p>
+                        <p>📍 Drop-off at main entrance</p>
+                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
+                        <p><em>Tips appreciated but not required</em></p>
+                    </div>
+                </div>
+
+                <p><strong>Important Notes:</strong></p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>Parking attendants will be on-site to assist with directions</li>
+                    <li>Please do not leave valuables visible in your vehicle</li>
+                    <li>Designated ride-share pickup area near main entrance</li>
+                </ul>
+
+                <p style="margin-top: 2rem;">If you have any special parking needs or questions, please let us know in advance so we can make appropriate arrangements.</p>
+            </div>
+        </div>
+
+        <!-- Schedule page -->
+        <div id="schedule" class="page">
+            <div class="content-section">
+                <h2>Wedding Schedule</h2>
+                <p>Here's the detailed schedule for our wedding day. We've included seating arrangements and all the important timing information to help you plan your day with us.</p>
+
+                <div class="pdf-container">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Seating Chart & Timeline</h3>
+                    <p style="margin-bottom: 1rem;"><em>The seating arrangements and detailed schedule are shown below:</em></p>
+
+                    <!-- Note: In a real deployment, you would upload the PDF files to your server and reference them here -->
+                    <div style="margin: 2rem 0; padding: 2rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px; text-align: center;">
+                        <h4>📋 Wedding Schedule & Seating Overview</h4>
+                        <p style="margin: 1rem 0;"><strong>3:30 PM</strong> - Guest arrival and cocktail hour</p>
+                        <p style="margin: 1rem 0;"><strong>4:00 PM</strong> - Wedding ceremony begins</p>
+                        <p style="margin: 1rem 0;"><strong>4:30 PM</strong> - Cocktail hour continues, photos</p>
+                        <p style="margin: 1rem 0;"><strong>6:00 PM</strong> - Reception dinner service</p>
+                        <p style="margin: 1rem 0;"><strong>7:30 PM</strong> - Toasts and speeches</p>
+                        <p style="margin: 1rem 0;"><strong>8:00 PM</strong> - First dance and dancing</p>
+                        <p style="margin: 1rem 0;"><strong>11:00 PM</strong> - Last dance and farewell</p>
+
+                        <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 8px;">
+                            <p><strong>PDF Documents:</strong></p>
+                            <p style="font-style: italic; color: var(--text-dark);">
+                                Detailed seating charts and timeline documents will be embedded here once uploaded to the server.
+                                The images you provided show the seating arrangement with 8 tables and additional areas for the bar, sweet bar, and special seating sections.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <p><strong>Special Notes:</strong></p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>Please arrive 15 minutes early for the ceremony</li>
+                    <li>Unplugged ceremony - we'll have professional photographers</li>
+                    <li>Cocktail hour will feature autumn-inspired appetizers</li>
+                    <li>Dancing will continue until 11 PM</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let sidebarOpen = false;
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            sidebarOpen = !sidebarOpen;
+
+            if (sidebarOpen) {
+                sidebar.classList.add('open');
+                overlay.classList.add('active');
+                menuToggle.classList.add('hidden');
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('hidden');
+            }
+        }
+
+        function closeSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            const menuToggle = document.querySelector('.menu-toggle');
+
+            sidebarOpen = false;
+            sidebar.classList.remove('open');
+            overlay.classList.remove('active');
+            menuToggle.classList.remove('hidden');
+        }
+
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update active menu item
+            const menuItems = document.querySelectorAll('.sidebar-nav a');
+            menuItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Close sidebar on mobile
+            closeSidebar();
+        }
+
+        // Add some floating leaf animations
+        function createFloatingLeaf() {
+            const leaf = document.createElement('div');
+            leaf.className = 'leaf-decoration';
+            leaf.innerHTML = ['🍂', '🍁', '🌾'][Math.floor(Math.random() * 3)];
+            leaf.style.left = Math.random() * 100 + '%';
+            leaf.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(leaf);
+
+            setTimeout(() => {
+                leaf.remove();
+            }, 6000);
+        }
+
+        // Create floating leaves periodically
+        setInterval(createFloatingLeaf, 3000);
+
+        // Countdown functionality
+        function updateCountdown() {
+            // Set the wedding date and time (October 15th, 2024 at 4:00 PM)
+            const weddingDate = new Date('October 15, 2024 16:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+
+                // Update message based on time remaining
+                if (days > 30) {
+                    document.getElementById('countdown-message').textContent = "Every moment brings us closer to our special day!";
+                } else if (days > 7) {
+                    document.getElementById('countdown-message').textContent = "The big day is approaching! We can't wait to celebrate with you! 🍁";
+                } else if (days > 1) {
+                    document.getElementById('countdown-message').textContent = "Just a few more days until we become husband and wife! 💕";
+                } else if (days === 1) {
+                    document.getElementById('countdown-message').textContent = "Tomorrow is the day! See you at the altar! 🥰";
+                } else {
+                    document.getElementById('countdown-message').textContent = "Today is our wedding day! Let's celebrate! 🎉";
+                }
+            } else {
+                // Wedding day has passed
+                document.getElementById('days').textContent = "0";
+                document.getElementById('hours').textContent = "0";
+                document.getElementById('minutes').textContent = "0";
+                document.getElementById('seconds').textContent = "0";
+                document.getElementById('countdown-message').textContent = "We're married! Thank you for celebrating with us! 💑";
+
+                // Add some celebratory styling
+                document.querySelector('.countdown-widget').style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
+            }
+        }
+
+        // Update countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

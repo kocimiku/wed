@@ -1,0 +1,17 @@
+{
+  "name": "wedding-website",
+  "version": "1.0.0",
+  "description": "Fall themed wedding website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "path": "^0.12.7"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
