@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Wedding - Fall 2024</title>
+    <title>Jája a Mikulda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -20,10 +21,12 @@
             --cream: #FAF0E6;
             --burgundy: #8B1538;
             --orange: #FF8C00;
+            --brown: #A47B67;
         }
 
         body {
             font-family: 'Georgia', serif;
+            /*background: #FFFFF0;*/
             background: linear-gradient(135deg, var(--cream) 0%, #F0E68C 100%);
             min-height: 100vh;
             color: var(--text-dark);
@@ -240,6 +243,23 @@
             transform: translateY(-5px);
         }
 
+        /* Clickable card styles */
+        .detail-card.clickable {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .detail-card.clickable:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            background: rgba(255,255,255,0.95);
+        }
+
+        .detail-card.clickable:active {
+            transform: translateY(-3px);
+            transition: transform 0.1s ease;
+        }
+
         .detail-card::before {
             content: '';
             position: absolute;
@@ -369,7 +389,7 @@
 
         /* Countdown widget */
         .countdown-widget {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--brown);
             border-radius: 20px;
             padding: 2rem;
             margin: 2rem 0;
@@ -387,13 +407,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: shimmer 4s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(180deg); }
+            background: var(--brown);
         }
 
         .countdown-title {
@@ -599,6 +613,96 @@
                 font-size: 1.2rem;
             }
         }
+
+        /* Venue button styles */
+        .venue-button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .venue-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        .venue-button:active {
+            transform: translateY(0px);
+        }
+
+        /* Mobile venue button */
+        @media (max-width: 768px) {
+            .venue-button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+        }
+
+
+        /* Color palette styles */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .color-swatch.burgundy { background-color: #902A02; }
+        .color-swatch.burnt-orange { background-color: #CC5500; }
+        .color-swatch.golden { background-color: #DAA520; }
+        .color-swatch.forest-green { background-color: #355E3B; }
+        .color-swatch.brown { background-color: #8B4513; }
+        .color-swatch.plum { background-color: #928E85; }
+
+        .palette-label {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Mobile color palette */
+        @media (max-width: 768px) {
+            .color-swatch {
+                width: 25px;
+                height: 25px;
+            }
+
+            .color-palette {
+                gap: 0.3rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -617,16 +721,17 @@
     <!-- Sidebar -->
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h2>Wedding Menu</h2>
-            <p style="color: var(--text-light); opacity: 0.8;">Fall 2024</p>
+            <h2>Svatební menu</h2>
+            <p style="color: var(--text-light); opacity: 0.8;">21.09.2025</p>
         </div>
         <div class="sidebar-nav">
             <ul>
-                <li><a href="#" onclick="showPage('home')" class="active">Home</a></li>
-                <li><a href="#" onclick="showPage('seating')">Seating</a></li>
-                <li><a href="#" onclick="showPage('accommodation')">Accommodation</a></li>
-                <li><a href="#" onclick="showPage('parking')">Parking</a></li>
-                <li><a href="#" onclick="showPage('schedule')">Schedule</a></li>
+                <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
+<!--                <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>-->
+<!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
+<!--                <li><a href="#" onclick="showPage('parking')">Parkování</a></li>-->
+<!--                <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>-->
+
             </ul>
         </div>
     </nav>
@@ -636,66 +741,80 @@
         <!-- Home page -->
         <div id="home" class="page active">
             <section class="hero">
-                <h1>Our Wedding</h1>
-                <p class="subtitle">A Fall Celebration</p>
-                <p style="font-size: 1.2rem; color: var(--text-dark);">Join us as we celebrate our love surrounded by the beauty of autumn</p>
+                <h1>Jája & Mikulda</h1>
+                <p class="subtitle"></p>
+                <p style="font-size: 1.2rem; color: var(--text-dark);">Pojďte s námi oslavit náš svatební den</p>
             </section>
 
             <!-- Countdown Widget -->
             <div class="countdown-widget">
-                <h2 class="countdown-title">🍂 Until We Say "I Do" 🍂</h2>
                 <div class="countdown-container">
                     <div class="countdown-item">
                         <span class="countdown-number" id="days">0</span>
-                        <span class="countdown-label">Days</span>
+                        <span class="countdown-label">Dní</span>
                     </div>
                     <div class="countdown-item">
                         <span class="countdown-number" id="hours">0</span>
-                        <span class="countdown-label">Hours</span>
+                        <span class="countdown-label">Hodin</span>
                     </div>
                     <div class="countdown-item">
                         <span class="countdown-number" id="minutes">0</span>
-                        <span class="countdown-label">Minutes</span>
+                        <span class="countdown-label">Minut</span>
                     </div>
                     <div class="countdown-item">
                         <span class="countdown-number" id="seconds">0</span>
-                        <span class="countdown-label">Seconds</span>
+                        <span class="countdown-label">Sekund</span>
                     </div>
                 </div>
-                <p class="countdown-message" id="countdown-message">Every moment brings us closer to our special day!</p>
+                <p class="countdown-message" id="countdown-message"></p>
             </div>
 
             <div class="wedding-details">
                 <div class="detail-card">
-                    <h3>📅 When</h3>
-                    <p><strong>Saturday, October 15th, 2024</strong></p>
-                    <p>Ceremony: 4:00 PM</p>
-                    <p>Reception: 6:00 PM</p>
+                    <h3><i class="fa-solid fa-calendar"></i> Kdy</h3>
+                    <p><strong>Neděle 21.09.2025</strong></p>
+                    <p>Příjezd hostů od 11 hodin</p>
+                    <p>Svatební obřad od 12 hodin</p>
+                </div>
+
+                <div class="detail-card clickable" onclick="openVenueLink()">
+                    <h3><i class="fa-solid fa-location-dot"></i> Kde</h3>
+                    <p><strong>Yard Resort</strong></p>
+                    <p>Ke Tvrzi 7</p>
+                    <p>250 72 Předboj-Kojetice u Prahy</p>
+                    <p style="font-size: 0.9rem; color: var(--secondary-color); margin-top: 1rem; font-style: italic;">
+                        Klikni pro více informací
+                    </p>
                 </div>
 
                 <div class="detail-card">
-                    <h3>📍 Where</h3>
-                    <p><strong>Autumn Grove Venue</strong></p>
-                    <p>123 Maple Street</p>
-                    <p>Countryside, State 12345</p>
-                </div>
+                    <h3><i class="fa-solid fa-user-tie"></i> Dress Code</h3>
+                    <p><strong>Semi-formal</strong></p>
+                    <p>Venkovní obřad – pokud počasí dovolí</p>
+                    <p class="palette-label">Doporučené barvy</p>
+                    <div class="color-palette">
+                        <div class="color-swatch burgundy"></div>
+                        <div class="color-swatch burnt-orange"></div>
+                        <div class="color-swatch golden"></div>
+                        <div class="color-swatch forest-green"></div>
+                        <div class="color-swatch brown"></div>
+                        <div class="color-swatch plum"></div>
+                    </div>
 
-                <div class="detail-card">
-                    <h3>👗 Dress Code</h3>
-                    <p><strong>Semi-Formal</strong></p>
-                    <p>Fall colors encouraged</p>
-                    <p>Outdoor ceremony - consider weather</p>
+
                 </div>
             </div>
 
+
             <div class="content-section">
-                <h2>Our Story</h2>
+                <h2>Náš příběh</h2>
+
 
                 <!-- Couple Photo Section -->
                 <div class="couple-photo-container">
                     <div class="photo-frame">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                             alt="Our Engagement Photo"
+                        <img src="images/photo.JPEG"
+                             alt="Our photo"
                              class="couple-photo"
                              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="photo-placeholder" style="display: none;">
@@ -705,17 +824,28 @@
                                 <p style="font-size: 0.9rem; opacity: 0.7;">Replace the image URL with your engagement or couple photo</p>
                             </div>
                         </div>
-                        <div class="photo-decorations">
-                            <span class="photo-leaf photo-leaf-1">🍂</span>
-                            <span class="photo-leaf photo-leaf-2">🍁</span>
-                            <span class="photo-leaf photo-leaf-3">🌾</span>
-                            <span class="photo-leaf photo-leaf-4">🍂</span>
-                        </div>
+
                     </div>
                 </div>
+                <p>Všechno to začalo v roce 2017… – ne na romantické zasněžené střelnici, jak by se u biatlonu slušelo, ale v parku Parukářka, v sídle biatlonového klubu Kapslovna. Biatlon je sport, který nás oba provází už mnoho let. Od začátku jsme byli v celku nerozluční parťáci, co si psali od rána do večera a chodili spolu ven.</p>
+                <p>Janinka se do Mikuldy zamilovala téměř okamžitě – jenže Mikuláš to tehdy ještě neviděl (nebo nechtěl vidět) a zůstali jsme “jen” přátelé.</p>
 
-                <p>We met on a crisp autumn day, and now we're celebrating our love during our favorite season. The golden leaves, warm colors, and cozy atmosphere of fall perfectly capture the warmth and joy we feel when we're together.</p>
-                <p>We can't wait to share this special day with our closest family and friends. Thank you for being part of our journey and for celebrating with us as we begin this new chapter of our lives together.</p>
+                <p>Pak ale přišel rok 2019 a s ním Mikuldova cesta do Anglie. Na rok odjel studovat pryč, a jak se říká – člověk někdy musí odejít daleko, aby uviděl to, co měl celou dobu přímo před sebou. Když se vrátil, bylo mu to jasné.</p>
+
+                <p>15. července 2020 (kolem jedné ráno!) Mikuláš napsal Janince zprávu, že je do ní zamilovaný. A od té chvíle jsme spolu.</p>
+
+                <p>Tedy, ještě jsme se to chvíli snažili utajit – třeba na soustředění v srpnu 2020, kde nám “tajná” láska vydržela asi den. Pak už to věděli všichni. A vlastně dobře – protože léto 2020 bylo začátkem naší společné cesty.</p>
+
+                <p><i>Od té doby jsme zvládli:</i></p>
+                <ul style="margin-left: 2em; margin-bottom: 1em;">
+                  <li>společně odmaturovat</li>
+                  <li>přestěhovat se a začít si budovat domov</li>
+                  <li>zažít první roky na vysoké škole i v práci</li>
+                  <li>stát se tetičkou a strejdou (a to hned dvakrát!)</li>
+                  <li>a hlavně – být si navzájem oporou ve všem, co život přinesl.</li>
+                </ul>
+
+                <p>A teď? Teď vás zveme, abyste s námi oslavili další kapitolu našeho příběhu. Protože to nejlepší nás teprve čeká.</p>
             </div>
         </div>
 
@@ -740,7 +870,7 @@
         </div>
 
         <!-- Accommodation page -->
-        <div id="accommodation" class="page">
+        <div id="gifts" class="page">
             <div class="content-section">
                 <h2>Accommodation</h2>
                 <p>We've reserved blocks of rooms at several nearby hotels for your convenience. Please mention our wedding when booking to receive the group rate.</p>
@@ -927,8 +1057,7 @@
 
         // Countdown functionality
         function updateCountdown() {
-            // Set the wedding date and time (October 15th, 2024 at 4:00 PM)
-            const weddingDate = new Date('October 15, 2024 16:00:00').getTime();
+            const weddingDate = new Date('September 21, 2025 12:00:00').getTime();
             const now = new Date().getTime();
             const timeLeft = weddingDate - now;
 
@@ -945,15 +1074,15 @@
 
                 // Update message based on time remaining
                 if (days > 30) {
-                    document.getElementById('countdown-message').textContent = "Every moment brings us closer to our special day!";
+                    document.getElementById('countdown-message').textContent = "Každou chvílí jsme blíže našemu svatebnímu dni. 🤍";
                 } else if (days > 7) {
-                    document.getElementById('countdown-message').textContent = "The big day is approaching! We can't wait to celebrate with you! 🍁";
+                    document.getElementById('countdown-message').textContent = "Náš den se blíží! Už se nemůžeme dočkat, až to s vámi oslavíme! 🤍";
                 } else if (days > 1) {
-                    document.getElementById('countdown-message').textContent = "Just a few more days until we become husband and wife! 💕";
+                    document.getElementById('countdown-message').textContent = "Už jen pár dní a řekneme si své „ano“! 🤍";
                 } else if (days === 1) {
-                    document.getElementById('countdown-message').textContent = "Tomorrow is the day! See you at the altar! 🥰";
+                    document.getElementById('countdown-message').textContent = "Zítra jen ten den! Tešíme se na vás u oltáře. 🤍";
                 } else {
-                    document.getElementById('countdown-message').textContent = "Today is our wedding day! Let's celebrate! 🎉";
+                    document.getElementById('countdown-message').textContent = "Dnes je náš svatební den – pojďme slavit! 🤍";
                 }
             } else {
                 // Wedding day has passed
@@ -961,16 +1090,20 @@
                 document.getElementById('hours').textContent = "0";
                 document.getElementById('minutes').textContent = "0";
                 document.getElementById('seconds').textContent = "0";
-                document.getElementById('countdown-message').textContent = "We're married! Thank you for celebrating with us! 💑";
+                document.getElementById('countdown-message').textContent = "Jsme novomanželé! Děkujeme, že jste byli součástí našeho dne. 🤍";
 
-                // Add some celebratory styling
-                document.querySelector('.countdown-widget').style.background = 'linear-gradient(135deg, #FFD700, #FFA500)';
             }
         }
 
         // Update countdown immediately and then every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
+
+        // Venue link function
+        function openVenueLink() {
+            // Open Google Maps with the venue address
+            window.open('https://www.yardresort.com/index.php/', '_blank', 'noopener,noreferrer');
+        }
     </script>
 </body>
 </html>
