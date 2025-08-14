@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jája a Mikulda</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/gkt3exm.css">
     <style>
         * {
             margin: 0;
@@ -26,13 +27,17 @@
         }
 
         body {
-            font-family: latino-urw, serif;
+            font-family: "Georgia", serif;
             font-style: normal;
             font-weight: 400;
             background: var(--cream);
             min-height: 100vh;
             color: var(--text-dark);
             overflow-x: hidden;
+        }
+
+        h1 {
+            font-family: "cinzel", serif;
         }
 
         @keyframes float {
@@ -442,29 +447,6 @@
             background: var(--brown);
         }
 
-/* Countdown widget */
-        .countdown-widget {
-            background: var(--brown);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            text-align: center;
-            color: white;
-            box-shadow: 0 15px 35px rgba(139, 69, 19, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .countdown-widget::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: var(--brown);
-        }
-
         .countdown-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
@@ -532,17 +514,18 @@
 
         .story-decoration {
             position: absolute;
-            opacity: 0.3;
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
         }
 
         .story-decoration.left-center {
-            top: clamp(60%, 8vw, 70%);
-            left: clamp(-130px, -5vw, -140px);
-            width: clamp(4rem, 10vw, 6.5rem);
-            height: clamp(4rem, 10vw, 7.5rem);
+            /*top: clamp(5px, 0.3vw, 10px);*/
+            top: -105px;
+            left: clamp(20px, 1vw, 50px);
+            width: clamp(4rem, 10vw, 7rem);
+            height: clamp(4rem, 10vw, 7rem);
+            opacity: 0.9;
             background-image: url('images/Zakladni_motiv.png');
         }
 
@@ -565,7 +548,7 @@
             /* Additional mobile adjustments for hero decorative elements */
             .hero::before {
                 top: -10px;
-                left: clamp(10px, 3vw, 20px);
+                left: clamp(30px, 3vw, 50px);
                 width: clamp(3rem, 8vw, 5rem);
                 height: clamp(3rem, 8vw, 5rem);
             }
@@ -624,16 +607,15 @@
             .story-decoration.left-center {
                 width: clamp(1rem, 3vw, 2rem);
                 height: clamp(1rem, 3vw, 2rem);
-                left: clamp(-20px, -3vw, -30px);
-                top: clamp(50%, 6vw, 65%);
+                left: clamp(10px, 3vw, 20px);
+                top: clamp(10px, 3vw, 20px);
             }
         }
 
         /* Extra small screens */
         @media (max-width: 480px) {
             .hero::before {
-                width: clamp(2.5rem, 6vw, 4rem);
-                height: clamp(2.5rem, 6vw, 4rem);
+                display: none
             }
 
             .hero::after {
@@ -651,10 +633,7 @@
 
             /* Extra small screen adjustments for story decorations */
             .story-decoration.left-center {
-                width: clamp(0.8rem, 2.5vw, 1.5rem);
-                height: clamp(0.8rem, 2.5vw, 1.5rem);
-                left: clamp(-15px, -2vw, -25px);
-                top: clamp(45%, 5vw, 60%);
+                display: none
             }
         }
         /* Couple photo styles */
@@ -663,33 +642,6 @@
             justify-content: center;
             margin: 2rem 0;
             position: relative;
-        }
-
-        /* Story section decorations around photo */
-        .story-decorations {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .story-decoration {
-            position: absolute;
-            opacity: 0.5;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .story-decoration.left-center {
-            top: 70%;
-            left: 40px;
-            width: 7rem;
-            height: 7rem;
-            background-image: url('images/Zakladni_motiv.png');
         }
 
 
@@ -715,23 +667,6 @@
             border-radius: 20px;
         }
 
-        .photo-placeholder {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--cream), #F0E68C);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-            border: 3px dashed var(--secondary-color);
-        }
-
-        .placeholder-content {
-            text-align: center;
-            color: var(--text-dark);
-            padding: 2rem;
-        }
-
         .placeholder-content p {
             margin: 0.5rem 0;
         }
@@ -755,14 +690,6 @@
                 transform: rotate(-1deg);
             }
 
-            .photo-placeholder {
-                height: 250px;
-            }
-
-            .placeholder-content {
-                padding: 1rem;
-            }
-
             /* Mobile countdown decorations */
             .countdown-decoration {
                 opacity: 0.1;
@@ -784,44 +711,6 @@
             }
 
         }
-
-        /* Venue button styles */
-        .venue-button {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
-            border: none;
-            cursor: pointer;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .venue-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-        }
-
-        .venue-button:active {
-            transform: translateY(0px);
-        }
-
-        /* Mobile venue button */
-        @media (max-width: 768px) {
-            .venue-button {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.8rem;
-            }
-        }
-
 
         /* Color palette styles */
         .color-palette {
@@ -899,8 +788,8 @@
             <ul>
                 <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
 <!--                <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>-->
-<!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
 <!--                <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>-->
+<!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
 <!--                <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>-->
 
             </ul>
@@ -935,10 +824,6 @@
                         <span class="countdown-number" id="minutes">0</span>
                         <span class="countdown-label">Minut</span>
                     </div>
-<!--                    <div class="countdown-item">-->
-<!--                        <span class="countdown-number" id="seconds">0</span>-->
-<!--                        <span class="countdown-label">Sekund</span>-->
-<!--                    </div>-->
                 </div>
                 <p class="countdown-message" id="countdown-message"></p>
             </div>
@@ -980,8 +865,6 @@
 
             <div class="content-section">
                 <h2>Náš příběh</h2>
-
-
                 <!-- Couple Photo Section -->
                 <div class="couple-photo-container">
                     <div class="story-decorations">
@@ -1036,10 +919,10 @@
             </div>
         </div>
 
-        <!-- Accommodation page -->
+        <!-- Gifts page -->
         <div id="gifts" class="page">
             <div class="content-section">
-                <h2>Accommodation</h2>
+                <h2>Gifts</h2>
                 <p>We've reserved blocks of rooms at several nearby hotels for your convenience. Please mention our wedding when booking to receive the group rate.</p>
 
                 <div style="margin: 2rem 0;">
@@ -1072,18 +955,16 @@
         <!-- Parking page -->
         <div id="parking" class="page">
             <div class="content-section">
-                <h2>Parking Information</h2>
+                <h2>Příjezd</h2>
                 <p>We want to ensure everyone has convenient and safe parking for our special day. Please review the parking options below.</p>
-
                 <div style="margin: 2rem 0;">
                     <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Parking Options</h3>
-
                     <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Main Venue Parking</strong></h4>
-                        <p>✅ Free self-parking</p>
-                        <p>📍 Adjacent to the venue building</p>
-                        <p>🚗 150 spaces available</p>
-                        <p><em>Recommended for elderly guests and those with mobility concerns</em></p>
+                        <h4><strong>Valet Service</strong></h4>
+                        <p>💰 $15 per vehicle</p>
+                        <p>📍 Drop-off at main entrance</p>
+                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
+                        <p><em>Tips appreciated but not required</em></p>
                     </div>
 
                     <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
@@ -1095,12 +976,9 @@
                     </div>
 
                     <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Valet Service</strong></h4>
-                        <p>💰 $15 per vehicle</p>
-                        <p>📍 Drop-off at main entrance</p>
-                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
-                        <p><em>Tips appreciated but not required</em></p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2552.6905248855833!2d14.473238977001296!3d50.223003371549545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470be907ab44030d%3A0x925d5e5751c86283!2sYard%20Resort!5e0!3m2!1sen!2scz!4v1755176375853!5m2!1sen!2scz" width="600" height="450" style="border:0; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
+
                 </div>
 
                 <p><strong>Important Notes:</strong></p>
@@ -1109,8 +987,6 @@
                     <li>Please do not leave valuables visible in your vehicle</li>
                     <li>Designated ride-share pickup area near main entrance</li>
                 </ul>
-
-                <p style="margin-top: 2rem;">If you have any special parking needs or questions, please let us know in advance so we can make appropriate arrangements.</p>
             </div>
         </div>
 
