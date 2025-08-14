@@ -26,8 +26,9 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            /*background: #FFFFF0;*/
+            font-family: latino-urw, serif;
+            font-style: normal;
+            font-weight: 400;
             background: var(--cream);
             min-height: 100vh;
             color: var(--text-dark);
@@ -934,10 +935,10 @@
                         <span class="countdown-number" id="minutes">0</span>
                         <span class="countdown-label">Minut</span>
                     </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="seconds">0</span>
-                        <span class="countdown-label">Sekund</span>
-                    </div>
+<!--                    <div class="countdown-item">-->
+<!--                        <span class="countdown-number" id="seconds">0</span>-->
+<!--                        <span class="countdown-label">Sekund</span>-->
+<!--                    </div>-->
                 </div>
                 <p class="countdown-message" id="countdown-message"></p>
             </div>
@@ -990,7 +991,7 @@
                         <img src="images/photo.JPEG"
                              alt="Our photo"
                              class="couple-photo"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        >
                     </div>
                 </div>
                 <p>Všechno to začalo v roce 2017… – ne na romantické zasněžené střelnici, jak by se u biatlonu slušelo, ale v parku Parukářka, v sídle biatlonového klubu Kapslovna. Biatlon je sport, který nás oba provází už mnoho let. Od začátku jsme byli v celku nerozluční parťáci, co si psali od rána do večera a chodili spolu ven.</p>
@@ -1214,12 +1215,12 @@
                 const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                // const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
                 document.getElementById('days').textContent = days;
                 document.getElementById('hours').textContent = hours;
                 document.getElementById('minutes').textContent = minutes;
-                document.getElementById('seconds').textContent = seconds;
+                // document.getElementById('seconds').textContent = seconds;
 
                 // Update message based on time remaining
                 if (days > 30) {
@@ -1238,7 +1239,7 @@
                 document.getElementById('days').textContent = "0";
                 document.getElementById('hours').textContent = "0";
                 document.getElementById('minutes').textContent = "0";
-                document.getElementById('seconds').textContent = "0";
+                // document.getElementById('seconds').textContent = "0";
                 document.getElementById('countdown-message').textContent = "Jsme novomanželé! Děkujeme, že jste byli součástí našeho dne. 🤍";
 
             }
