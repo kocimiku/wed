@@ -529,6 +529,16 @@
             background-image: url('images/Zakladni_motiv.png');
         }
 
+        .story-decoration.right-center {
+            /*top: clamp(5px, 0.3vw, 10px);*/
+            top: -105px;
+            right: clamp(20px, 1vw, 50px);
+            width: clamp(4rem, 10vw, 7rem);
+            height: clamp(4rem, 10vw, 7rem);
+            opacity: 0.9;
+            background-image: url('images/Zakladni_motiv.png');
+        }
+
         /* Mobile responsivity */
         @media (max-width: 768px) {
             .menu-toggle {
@@ -610,6 +620,13 @@
                 left: clamp(10px, 3vw, 20px);
                 top: clamp(10px, 3vw, 20px);
             }
+
+            .story-decoration.left-center {
+                width: clamp(1rem, 3vw, 2rem);
+                height: clamp(1rem, 3vw, 2rem);
+                right: clamp(10px, 3vw, 20px);
+                top: clamp(10px, 3vw, 20px);
+            }
         }
 
         /* Extra small screens */
@@ -633,6 +650,10 @@
 
             /* Extra small screen adjustments for story decorations */
             .story-decoration.left-center {
+                display: none
+            }
+
+            .story-decoration.right-center {
                 display: none
             }
         }
@@ -706,6 +727,11 @@
             }
 
             .story-decoration.left-center {
+                width: 1.8rem;
+                height: 1.8rem;
+            }
+
+            .story-decoration.right-center {
                 width: 1.8rem;
                 height: 1.8rem;
             }
@@ -787,11 +813,10 @@
         <div class="sidebar-nav">
             <ul>
                 <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
-<!--                <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>-->
+                <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>
 <!--                <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>-->
 <!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
 <!--                <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>-->
-
             </ul>
         </div>
     </nav>
@@ -899,6 +924,76 @@
             </div>
         </div>
 
+         <!-- Schedule page -->
+        <div id="schedule" class="page">
+            <div class="content-section">
+                <h2>Harmonogram</h2>
+                    <div class="couple-photo-container">
+                    <div class="story-decorations">
+                        <div class="story-decoration right-center"></div>
+                    </div>
+                </div>
+                <div style="margin: 2rem 0; padding: 2rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; row-gap: 1rem;">
+                        <strong>11:00</strong><span>Příjezd hostů, welcome drink</span>
+                        <strong>12:00</strong><span>Svatební obřad</span>
+                        <strong>12:30</strong><span>Gratulace, špalír a hromadné focení</span>
+                        <strong>13:15</strong><span>Přesun k sýpce, rozbíjení talířku, usazení, proslov</span>
+                        <strong>13:30</strong><span>Svatební oběd</span>
+                        <strong>14:30</strong><span>Individuální focení novomanželů</span>
+                        <strong>15:30</strong><span>Krájení svatebního dortu</span>
+                        <strong>16:30</strong><span>Hod kyticí</span>
+                        <strong>17:00</strong><span>Svatební tanec novomanželů a večerní raut</span>
+                    </div>
+                </div>
+
+                <p><strong>Poznámka:</strong></p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>Obřad plánujeme konat venku, pokud to počasí dovolí. Oblečení si prosím zvolte s ohledem na tuto skutečnost.</li>
+                    <li>Ve večerních hodinách bude pokračovat volná zábava.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Parking page -->
+        <div id="parking" class="page">
+            <div class="content-section">
+                <h2>Příjezd</h2>
+                <p>We want to ensure everyone has convenient and safe parking for our special day. Please review the parking options below.</p>
+                <div style="margin: 2rem 0;">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Parking Options</h3>
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Valet Service</strong></h4>
+                        <p>💰 $15 per vehicle</p>
+                        <p>📍 Drop-off at main entrance</p>
+                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
+                        <p><em>Tips appreciated but not required</em></p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <h4><strong>Overflow Parking</strong></h4>
+                        <p>✅ Free self-parking</p>
+                        <p>📍 2-minute walk to venue (shuttle available)</p>
+                        <p>🚗 200 additional spaces</p>
+                        <p><em>Well-lit pathway with signage</em></p>
+                    </div>
+
+                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2552.6905248855833!2d14.473238977001296!3d50.223003371549545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470be907ab44030d%3A0x925d5e5751c86283!2sYard%20Resort!5e0!3m2!1sen!2scz!4v1755176375853!5m2!1sen!2scz" width="600" height="450" style="border:0; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                </div>
+
+                <p><strong>Important Notes:</strong></p>
+                <ul style="margin: 1rem 0; padding-left: 2rem;">
+                    <li>Parking attendants will be on-site to assist with directions</li>
+                    <li>Please do not leave valuables visible in your vehicle</li>
+                    <li>Designated ride-share pickup area near main entrance</li>
+                </ul>
+            </div>
+        </div>
+
+
         <!-- Seating page -->
         <div id="seating" class="page">
             <div class="content-section">
@@ -949,85 +1044,6 @@
                 <p><strong>Group Code:</strong> FALL2024</p>
 
                 <p style="margin-top: 2rem;">For alternative accommodations or if you need assistance with booking, please don't hesitate to reach out to us. We're happy to help make your stay as comfortable as possible.</p>
-            </div>
-        </div>
-
-        <!-- Parking page -->
-        <div id="parking" class="page">
-            <div class="content-section">
-                <h2>Příjezd</h2>
-                <p>We want to ensure everyone has convenient and safe parking for our special day. Please review the parking options below.</p>
-                <div style="margin: 2rem 0;">
-                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Parking Options</h3>
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Valet Service</strong></h4>
-                        <p>💰 $15 per vehicle</p>
-                        <p>📍 Drop-off at main entrance</p>
-                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
-                        <p><em>Tips appreciated but not required</em></p>
-                    </div>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Overflow Parking</strong></h4>
-                        <p>✅ Free self-parking</p>
-                        <p>📍 2-minute walk to venue (shuttle available)</p>
-                        <p>🚗 200 additional spaces</p>
-                        <p><em>Well-lit pathway with signage</em></p>
-                    </div>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2552.6905248855833!2d14.473238977001296!3d50.223003371549545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470be907ab44030d%3A0x925d5e5751c86283!2sYard%20Resort!5e0!3m2!1sen!2scz!4v1755176375853!5m2!1sen!2scz" width="600" height="450" style="border:0; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-
-                </div>
-
-                <p><strong>Important Notes:</strong></p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Parking attendants will be on-site to assist with directions</li>
-                    <li>Please do not leave valuables visible in your vehicle</li>
-                    <li>Designated ride-share pickup area near main entrance</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Schedule page -->
-        <div id="schedule" class="page">
-            <div class="content-section">
-                <h2>Harmonogram</h2>
-                <p>Here's the detailed schedule for our wedding day. We've included seating arrangements and all the important timing information to help you plan your day with us.</p>
-
-                <div class="pdf-container">
-                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Seating Chart & Timeline</h3>
-                    <p style="margin-bottom: 1rem;"><em>The seating arrangements and detailed schedule are shown below:</em></p>
-
-                    <!-- Note: In a real deployment, you would upload the PDF files to your server and reference them here -->
-                    <div style="margin: 2rem 0; padding: 2rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px; text-align: center;">
-                        <h4>📋 Wedding Schedule & Seating Overview</h4>
-                        <p style="margin: 1rem 0;"><strong>3:30 PM</strong> - Guest arrival and cocktail hour</p>
-                        <p style="margin: 1rem 0;"><strong>4:00 PM</strong> - Wedding ceremony begins</p>
-                        <p style="margin: 1rem 0;"><strong>4:30 PM</strong> - Cocktail hour continues, photos</p>
-                        <p style="margin: 1rem 0;"><strong>6:00 PM</strong> - Reception dinner service</p>
-                        <p style="margin: 1rem 0;"><strong>7:30 PM</strong> - Toasts and speeches</p>
-                        <p style="margin: 1rem 0;"><strong>8:00 PM</strong> - First dance and dancing</p>
-                        <p style="margin: 1rem 0;"><strong>11:00 PM</strong> - Last dance and farewell</p>
-
-                        <div style="margin-top: 2rem; padding: 1rem; background: white; border-radius: 8px;">
-                            <p><strong>PDF Documents:</strong></p>
-                            <p style="font-style: italic; color: var(--text-dark);">
-                                Detailed seating charts and timeline documents will be embedded here once uploaded to the server.
-                                The images you provided show the seating arrangement with 8 tables and additional areas for the bar, sweet bar, and special seating sections.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <p><strong>Special Notes:</strong></p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Please arrive 15 minutes early for the ceremony</li>
-                    <li>Unplugged ceremony - we'll have professional photographers</li>
-                    <li>Cocktail hour will feature autumn-inspired appetizers</li>
-                    <li>Dancing will continue until 11 PM</li>
-                </ul>
             </div>
         </div>
     </main>
