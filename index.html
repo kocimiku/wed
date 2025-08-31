@@ -321,6 +321,76 @@
             text-align: justify;
         }
 
+        .parking-container {
+            margin: 1.5rem auto;
+            padding: 1.5rem;
+            background: rgba(139, 69, 19, 0.1);
+            border-radius: 8px;
+            width: 100%;
+        }
+
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 66.6%; /* 3:2 aspect ratio (500:333) */
+            overflow: hidden;
+            border-radius: 8px;
+            background: #e0e0e0;
+        }
+
+        .map-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+
+        /* Color palette styles */
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        }
+
+        .color-swatch.burgundy { background-color: var(--primary-color); }
+        .color-swatch.burnt-orange { background-color: var(--secondary-color); }
+        .color-swatch.golden { background-color: var(--accent-color); }
+        .color-swatch.forest-green { background-color: #355E3B; }
+        .color-swatch.brown { background-color: var(--brown); }
+        .color-swatch.plum { background-color: var(--text-dark); }
+
+        .palette-label {
+            font-size: 0.8rem;
+            color: var(--secondary-color);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+
         /* PDF container */
         .pdf-container {
             margin: 2rem 0;
@@ -332,66 +402,7 @@
             height: 600px;
             border: none;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             margin-bottom: 1rem;
-        }
-
-        /* Mobile responsivity */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                top: 1rem;
-                left: 1rem;
-            }
-
-            .page {
-                padding: 1rem;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-                margin: 1rem 0;
-            }
-
-            /* Additional mobile adjustments for hero decorative elements */
-            .hero::before {
-                top: -10px;
-                left: clamp(10px, 3vw, 20px);
-                width: clamp(3rem, 8vw, 5rem);
-                height: clamp(3rem, 8vw, 5rem);
-            }
-
-            .hero::after {
-                bottom: clamp(10px, 2vw, 15px);
-                right: clamp(5px, 1vw, 10px);
-                width: clamp(4rem, 12vw, 8rem);
-                height: clamp(4rem, 12vw, 8rem);
-            }
-
-            .content-section {
-                padding: 2rem 1rem;
-            }
-
-            .wedding-details {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .pdf-embed {
-                height: 400px;
-            }
-        }
-
-        /* Extra small screens */
-        @media (max-width: 480px) {
-            .hero::before {
-                width: clamp(2.5rem, 6vw, 4rem);
-                height: clamp(2.5rem, 6vw, 4rem);
-            }
-
-            .hero::after {
-                width: clamp(3rem, 10vw, 6rem);
-                height: clamp(3rem, 10vw, 6rem);
-            }
         }
 
         /* Autumn flower decorations */
@@ -539,126 +550,7 @@
             background-image: url('images/Zakladni_motiv.png');
         }
 
-        /* Mobile responsivity */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                top: 1rem;
-                left: 1rem;
-            }
-
-            .page {
-                padding: 1rem;
-            }
-
-            .hero {
-                padding: 2rem 1rem;
-                margin: 1rem 0;
-            }
-
-            /* Additional mobile adjustments for hero decorative elements */
-            .hero::before {
-                top: -10px;
-                left: clamp(30px, 3vw, 50px);
-                width: clamp(3rem, 8vw, 5rem);
-                height: clamp(3rem, 8vw, 5rem);
-            }
-
-            .hero::after {
-                bottom: clamp(10px, 2vw, 15px);
-                right: clamp(5px, 1vw, 10px);
-                width: clamp(4rem, 12vw, 8rem);
-                height: clamp(4rem, 12vw, 8rem);
-            }
-
-            .content-section {
-                padding: 2rem 1rem;
-            }
-
-            .wedding-details {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .pdf-embed {
-                height: 400px;
-            }
-
-            /* Mobile countdown adjustments */
-            .countdown-widget {
-                padding: 1.5rem;
-                margin: 1rem 0;
-            }
-
-            .countdown-container {
-                gap: 0.5rem;
-            }
-
-            .countdown-item {
-                padding: 0.8rem 0.3rem;
-            }
-
-            .countdown-number {
-                font-size: 1.5rem;
-            }
-
-            .countdown-label {
-                font-size: 0.8rem;
-            }
-
-            /* Mobile adjustments for countdown decorations */
-            .countdown-decoration.center-left {
-                width: clamp(2rem, 6vw, 3rem);
-                height: clamp(2rem, 6vw, 3rem);
-                bottom: clamp(5%, 2vw, 15%);
-                left: clamp(40%, 8vw, 60%);
-            }
-
-            /* Mobile adjustments for story decorations */
-            .story-decoration.left-center {
-                width: clamp(1rem, 3vw, 2rem);
-                height: clamp(1rem, 3vw, 2rem);
-                left: clamp(10px, 3vw, 20px);
-                top: clamp(10px, 3vw, 20px);
-            }
-
-            .story-decoration.left-center {
-                width: clamp(1rem, 3vw, 2rem);
-                height: clamp(1rem, 3vw, 2rem);
-                right: clamp(10px, 3vw, 20px);
-                top: clamp(10px, 3vw, 20px);
-            }
-        }
-
-        /* Extra small screens */
-        @media (max-width: 480px) {
-            .hero::before {
-                display: none
-            }
-
-            .hero::after {
-                width: clamp(3rem, 10vw, 6rem);
-                height: clamp(3rem, 10vw, 6rem);
-            }
-
-            /* Extra small screen adjustments for countdown decorations */
-            .countdown-decoration.center-left {
-                width: clamp(1.5rem, 5vw, 2.5rem);
-                height: clamp(1.5rem, 5vw, 2.5rem);
-                bottom: clamp(3%, 1vw, 10%);
-                left: clamp(35%, 6vw, 50%);
-            }
-
-            /* Extra small screen adjustments for story decorations */
-            .story-decoration.left-center {
-                display: none
-            }
-
-            .story-decoration.right-center {
-                display: none
-            }
-        }
-        /* Couple photo styles */
-        .couple-photo-container {
+         .couple-photo-container {
             display: flex;
             justify-content: center;
             margin: 2rem 0;
@@ -704,8 +596,134 @@
             }
         }
 
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero::before {
+                display: none
+            }
+
+            .hero::after {
+                width: clamp(3rem, 10vw, 6rem);
+                height: clamp(3rem, 10vw, 6rem);
+            }
+
+            /* Extra small screen adjustments for countdown decorations */
+            .countdown-decoration.center-left {
+                width: clamp(1.5rem, 5vw, 2.5rem);
+                height: clamp(1.5rem, 5vw, 2.5rem);
+                bottom: clamp(3%, 1vw, 10%);
+                left: clamp(35%, 6vw, 50%);
+            }
+
+            /* Extra small screen adjustments for story decorations */
+            .story-decoration.left-center {
+                display: none
+            }
+
+            .story-decoration.right-center {
+                display: none
+            }
+
+            .parking-container {
+                margin: 0.5rem auto;
+                padding: 0.75rem;
+            }
+
+            .map-wrapper {
+                padding-bottom: 75%; /* Slightly taller on very small screens */
+            }
+        }
+
+
         /* Mobile photo adjustments */
         @media (max-width: 768px) {
+
+            .countdown-widget {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .countdown-container {
+                gap: 0.5rem;
+            }
+
+            .countdown-item {
+                padding: 0.8rem 0.3rem;
+            }
+
+            .countdown-number {
+                font-size: 1.5rem;
+            }
+
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+
+            /* Mobile adjustments for countdown decorations */
+            .countdown-decoration.center-left {
+                width: clamp(2rem, 6vw, 3rem);
+                height: clamp(2rem, 6vw, 3rem);
+                bottom: clamp(5%, 2vw, 15%);
+                left: clamp(40%, 8vw, 60%);
+            }
+
+            /* Mobile adjustments for story decorations */
+            .story-decoration.left-center {
+                width: clamp(1rem, 3vw, 2rem);
+                height: clamp(1rem, 3vw, 2rem);
+                left: clamp(10px, 3vw, 20px);
+                top: clamp(10px, 3vw, 20px);
+            }
+
+            .story-decoration.left-center {
+                width: clamp(1rem, 3vw, 2rem);
+                height: clamp(1rem, 3vw, 2rem);
+                right: clamp(10px, 3vw, 20px);
+                top: clamp(10px, 3vw, 20px);
+            }
+
+             .menu-toggle {
+                top: 1rem;
+                left: 1rem;
+            }
+
+            .page {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+                margin: 1rem 0;
+            }
+
+            .hero::before {
+                top: -10px;
+                left: clamp(10px, 3vw, 20px);
+                width: clamp(3rem, 8vw, 5rem);
+                height: clamp(3rem, 8vw, 5rem);
+            }
+
+            .hero::after {
+                bottom: clamp(10px, 2vw, 15px);
+                right: clamp(5px, 1vw, 10px);
+                width: clamp(4rem, 12vw, 8rem);
+                height: clamp(4rem, 12vw, 8rem);
+            }
+
+            .content-section {
+                padding: 2rem 1rem;
+            }
+
+            .wedding-details {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .pdf-embed {
+                height: 400px;
+            }
+
             .photo-frame {
                 max-width: 300px;
                 transform: rotate(-1deg);
@@ -736,49 +754,6 @@
                 height: 1.8rem;
             }
 
-        }
-
-        /* Color palette styles */
-        .color-palette {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 1rem 0;
-            flex-wrap: wrap;
-        }
-
-        .color-swatch {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.8);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .color-swatch:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        }
-
-        .color-swatch.burgundy { background-color: var(--primary-color); }
-        .color-swatch.burnt-orange { background-color: var(--secondary-color); }
-        .color-swatch.golden { background-color: var(--accent-color); }
-        .color-swatch.forest-green { background-color: #355E3B; }
-        .color-swatch.brown { background-color: var(--brown); }
-        .color-swatch.plum { background-color: var(--text-dark); }
-
-        .palette-label {
-            font-size: 0.8rem;
-            color: var(--secondary-color);
-            margin-top: 0.5rem;
-            font-style: italic;
-        }
-
-        /* Mobile color palette */
-        @media (max-width: 768px) {
             .color-swatch {
                 width: 25px;
                 height: 25px;
@@ -787,7 +762,23 @@
             .color-palette {
                 gap: 0.3rem;
             }
+
+            .parking-container {
+                margin: 1rem auto;
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .parking-container h4 {
+                font-size: 1.1rem;
+            }
+
+            .parking-container p {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
         }
+
 
     </style>
 </head>
@@ -814,7 +805,7 @@
             <ul>
                 <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
                 <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>
-<!--                <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>-->
+                <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>
 <!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
 <!--                <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>-->
             </ul>
@@ -928,7 +919,7 @@
         <div id="schedule" class="page">
             <div class="content-section">
                 <h2>Harmonogram</h2>
-                    <div class="couple-photo-container">
+                <div class="couple-photo-container">
                     <div class="story-decorations">
                         <div class="story-decoration right-center"></div>
                     </div>
@@ -959,40 +950,24 @@
         <div id="parking" class="page">
             <div class="content-section">
                 <h2>Příjezd</h2>
-                <p>We want to ensure everyone has convenient and safe parking for our special day. Please review the parking options below.</p>
-                <div style="margin: 2rem 0;">
-                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Parking Options</h3>
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Valet Service</strong></h4>
-                        <p>💰 $15 per vehicle</p>
-                        <p>📍 Drop-off at main entrance</p>
-                        <p>⏰ Available 3:30 PM - 12:00 AM</p>
-                        <p><em>Tips appreciated but not required</em></p>
+                <div class="couple-photo-container">
+                    <div class="story-decorations">
+                        <div class="story-decoration right-center"></div>
                     </div>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Overflow Parking</strong></h4>
-                        <p>✅ Free self-parking</p>
-                        <p>📍 2-minute walk to venue (shuttle available)</p>
-                        <p>🚗 200 additional spaces</p>
-                        <p><em>Well-lit pathway with signage</em></p>
-                    </div>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2552.6905248855833!2d14.473238977001296!3d50.223003371549545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470be907ab44030d%3A0x925d5e5751c86283!2sYard%20Resort!5e0!3m2!1sen!2scz!4v1755176375853!5m2!1sen!2scz" width="600" height="450" style="border:0; display: block; margin: 0 auto;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-
                 </div>
-
-                <p><strong>Important Notes:</strong></p>
+                <div class="parking-container" style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                    <h4><strong>Parkování</strong></h4>
+                    <p>Doporučujeme příjezd na místo z ulice Báštecká, při kterém parkoviště najdete po pravé straně (viz. mapa níže).</p>
+                    <div class="map-wrapper">
+                        <iframe src="https://mapy.com/s/bafosopomo" allowfullscreen></iframe>
+                    </div>
+                </div>
                 <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Parking attendants will be on-site to assist with directions</li>
-                    <li>Please do not leave valuables visible in your vehicle</li>
-                    <li>Designated ride-share pickup area near main entrance</li>
+                    <li>Na místo se dá dopravit také autobusem z Ládví na zástávku Předboj, U rybníka (cca 30 minut).</li>
                 </ul>
+
             </div>
         </div>
-
 
         <!-- Seating page -->
         <div id="seating" class="page">
@@ -1017,33 +992,17 @@
         <!-- Gifts page -->
         <div id="gifts" class="page">
             <div class="content-section">
-                <h2>Gifts</h2>
-                <p>We've reserved blocks of rooms at several nearby hotels for your convenience. Please mention our wedding when booking to receive the group rate.</p>
-
-                <div style="margin: 2rem 0;">
-                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Recommended Hotels</h3>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Autumn Inn & Suites</strong></h4>
-                        <p>📍 456 Oak Avenue, 2 miles from venue</p>
-                        <p>📞 (555) 123-4567</p>
-                        <p>💰 $120/night (group rate)</p>
-                        <p>Includes: Complimentary breakfast, WiFi, parking</p>
-                    </div>
-
-                    <div style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                        <h4><strong>Countryside Lodge</strong></h4>
-                        <p>📍 789 Pine Road, 3 miles from venue</p>
-                        <p>📞 (555) 987-6543</p>
-                        <p>💰 $95/night (group rate)</p>
-                        <p>Includes: WiFi, fitness center, pool</p>
+                <h2>Dary</h2>
+                <div class="couple-photo-container">
+                    <div class="story-decorations">
+                        <div class="story-decoration right-center"></div>
                     </div>
                 </div>
-
-                <p><strong>Booking Deadline:</strong> September 15th, 2024</p>
-                <p><strong>Group Code:</strong> FALL2024</p>
-
-                <p style="margin-top: 2rem;">For alternative accommodations or if you need assistance with booking, please don't hesitate to reach out to us. We're happy to help make your stay as comfortable as possible.</p>
+                <p>V obálce s pozvánkou naleznete doplňkovou kartičku na toto téma, raději však dáváme informace i zde.</p>
+                <div class="pdf-container">
+                    <div class="pdf-embed">
+                    </div>
+                </div>
             </div>
         </div>
     </main>
