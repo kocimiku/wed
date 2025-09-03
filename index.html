@@ -14,7 +14,6 @@
         }
 
         :root {
-            /*--primary-color: #8B4513;*/
             --primary-color: #611422;
             --secondary-color: #8B4513;
             --accent-color: #CD853F;
@@ -41,11 +40,14 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
         }
 
-        /* Sidebar */
         .sidebar {
             position: fixed;
             left: -300px;
@@ -55,7 +57,7 @@
             background: var(--primary-color);
             transition: left 0.3s ease;
             z-index: 1000;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar::after {
@@ -81,7 +83,7 @@
         .sidebar-header {
             padding: 2rem;
             text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .sidebar-header h2 {
@@ -113,11 +115,10 @@
 
         .sidebar-nav a:hover,
         .sidebar-nav a.active {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-left-color: var(--text-light);
         }
 
-        /* Menu toggle */
         .menu-toggle {
             position: fixed;
             top: 2rem;
@@ -131,7 +132,7 @@
             border-radius: 50%;
             cursor: pointer;
             font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
         }
 
@@ -145,14 +146,13 @@
             transform: scale(0.8);
         }
 
-        /* Overlay */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -164,7 +164,6 @@
             visibility: visible;
         }
 
-        /* Main content */
         .main-content {
             margin-left: 0;
             min-height: 100vh;
@@ -184,15 +183,20 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Landing page */
         .hero {
             text-align: center;
             padding: 4rem 2rem;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.8), transparent);
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8), transparent);
             border-radius: 20px;
             margin: 2rem 0;
             position: relative;
@@ -229,7 +233,7 @@
             font-size: clamp(2.5rem, 5vw, 4rem);
             color: var(--primary-color);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero .subtitle {
@@ -247,10 +251,10 @@
         }
 
         .detail-card {
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -261,7 +265,6 @@
             transform: translateY(-5px);
         }
 
-        /* Clickable card styles */
         .detail-card.clickable {
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
@@ -269,8 +272,8 @@
 
         .detail-card.clickable:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-            background: rgba(255,255,255,0.95);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         .detail-card.clickable:active {
@@ -299,13 +302,12 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Content sections */
         .content-section {
-            background: rgba(255,255,255,0.9);
+            background: rgba(255, 255, 255, 0.9);
             padding: 3rem;
             border-radius: 15px;
             margin: 2rem 0;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .content-section h2 {
@@ -334,7 +336,7 @@
             position: relative;
             width: 100%;
             height: 0;
-            padding-bottom: 66.6%; /* 3:2 aspect ratio (500:333) */
+            padding-bottom: 66.6%;
             overflow: hidden;
             border-radius: 8px;
             background: #e0e0e0;
@@ -351,7 +353,6 @@
         }
 
 
-        /* Color palette styles */
         .color-palette {
             display: flex;
             justify-content: center;
@@ -364,8 +365,8 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.8);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             cursor: pointer;
             position: relative;
@@ -373,15 +374,32 @@
 
         .color-swatch:hover {
             transform: scale(1.2);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
-        .color-swatch.burgundy { background-color: var(--primary-color); }
-        .color-swatch.burnt-orange { background-color: var(--secondary-color); }
-        .color-swatch.golden { background-color: var(--accent-color); }
-        .color-swatch.forest-green { background-color: #355E3B; }
-        .color-swatch.brown { background-color: var(--brown); }
-        .color-swatch.plum { background-color: var(--text-dark); }
+        .color-swatch.burgundy {
+            background-color: var(--primary-color);
+        }
+
+        .color-swatch.burnt-orange {
+            background-color: var(--secondary-color);
+        }
+
+        .color-swatch.golden {
+            background-color: var(--accent-color);
+        }
+
+        .color-swatch.forest-green {
+            background-color: #355E3B;
+        }
+
+        .color-swatch.brown {
+            background-color: var(--brown);
+        }
+
+        .color-swatch.plum {
+            background-color: var(--text-dark);
+        }
 
         .palette-label {
             font-size: 0.8rem;
@@ -390,22 +408,6 @@
             font-style: italic;
         }
 
-
-        /* PDF container */
-        .pdf-container {
-            margin: 2rem 0;
-            text-align: center;
-        }
-
-        .pdf-embed {
-            width: 100%;
-            height: 600px;
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        /* Autumn flower decorations */
         .flower-decoration {
             position: fixed;
             pointer-events: none;
@@ -435,7 +437,6 @@
             background-image: url('images/Listy_B.png');
         }
 
-        /* Countdown widget */
         .countdown-widget {
             background: var(--brown);
             border-radius: 20px;
@@ -469,11 +470,11 @@
         }
 
         .countdown-item {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 15px;
             padding: 1rem 0.5rem;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             transition: transform 0.3s ease;
         }
 
@@ -485,7 +486,7 @@
             font-size: 2rem;
             font-weight: bold;
             display: block;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .countdown-label {
@@ -504,7 +505,6 @@
             z-index: 1;
         }
 
-        /* Couple photo styles */
         .couple-photo-container {
             display: flex;
             justify-content: center;
@@ -512,7 +512,6 @@
             position: relative;
         }
 
-        /* Story section decorations around photo */
         .story-decorations {
             position: absolute;
             top: 0;
@@ -531,7 +530,6 @@
         }
 
         .story-decoration.left-center {
-            /*top: clamp(5px, 0.3vw, 10px);*/
             top: -105px;
             left: clamp(20px, 1vw, 50px);
             width: clamp(4rem, 10vw, 7rem);
@@ -541,7 +539,6 @@
         }
 
         .story-decoration.right-center {
-            /*top: clamp(5px, 0.3vw, 10px);*/
             top: -105px;
             right: clamp(20px, 1vw, 50px);
             width: clamp(4rem, 10vw, 7rem);
@@ -550,7 +547,7 @@
             background-image: url('images/Zakladni_motiv.png');
         }
 
-         .couple-photo-container {
+        .couple-photo-container {
             display: flex;
             justify-content: center;
             margin: 2rem 0;
@@ -580,10 +577,21 @@
             border-radius: 20px;
         }
 
-        .placeholder-content p {
-            margin: 0.5rem 0;
+        .landscape-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: #fff;
         }
 
+        .landscape-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
 
         @keyframes leafFloat {
             0%, 100% {
@@ -608,7 +616,6 @@
                 height: clamp(3rem, 10vw, 6rem);
             }
 
-            /* Extra small screen adjustments for countdown decorations */
             .countdown-decoration.center-left {
                 width: clamp(1.5rem, 5vw, 2.5rem);
                 height: clamp(1.5rem, 5vw, 2.5rem);
@@ -616,7 +623,6 @@
                 left: clamp(35%, 6vw, 50%);
             }
 
-            /* Extra small screen adjustments for story decorations */
             .story-decoration.left-center {
                 display: none
             }
@@ -631,7 +637,7 @@
             }
 
             .map-wrapper {
-                padding-bottom: 75%; /* Slightly taller on very small screens */
+                padding-bottom: 75%;
             }
         }
 
@@ -660,7 +666,6 @@
                 font-size: 0.8rem;
             }
 
-            /* Mobile adjustments for countdown decorations */
             .countdown-decoration.center-left {
                 width: clamp(2rem, 6vw, 3rem);
                 height: clamp(2rem, 6vw, 3rem);
@@ -668,7 +673,6 @@
                 left: clamp(40%, 8vw, 60%);
             }
 
-            /* Mobile adjustments for story decorations */
             .story-decoration.left-center {
                 width: clamp(1rem, 3vw, 2rem);
                 height: clamp(1rem, 3vw, 2rem);
@@ -683,7 +687,7 @@
                 top: clamp(10px, 3vw, 20px);
             }
 
-             .menu-toggle {
+            .menu-toggle {
                 top: 1rem;
                 left: 1rem;
             }
@@ -720,16 +724,11 @@
                 gap: 1rem;
             }
 
-            .pdf-embed {
-                height: 400px;
-            }
-
             .photo-frame {
                 max-width: 300px;
                 transform: rotate(-1deg);
             }
 
-            /* Mobile countdown decorations */
             .countdown-decoration {
                 opacity: 0.1;
             }
@@ -739,7 +738,6 @@
                 height: 1.5rem;
             }
 
-            /* Mobile story decorations */
             .story-decoration {
                 opacity: 0.08;
             }
@@ -777,334 +775,365 @@
                 font-size: 0.95rem;
                 margin-bottom: 1rem;
             }
+
+            .landscape-container {
+                margin-bottom: 1.5rem;
+                border-radius: 8px;
+            }
         }
 
 
     </style>
 </head>
 <body>
-    <!-- Decorative elements - Updated for PNG images -->
-    <div class="flower-decoration top-left"></div>
-    <div class="flower-decoration top-right"></div>
-    <div class="flower-decoration bottom-left"></div>
-    <div class="flower-decoration bottom-right"></div>
+<!-- Decorative elements - Updated for PNG images -->
+<div class="flower-decoration top-left"></div>
+<div class="flower-decoration top-right"></div>
+<div class="flower-decoration bottom-left"></div>
+<div class="flower-decoration bottom-right"></div>
 
-    <!-- Menu toggle button -->
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<!-- Menu toggle button -->
+<button class="menu-toggle" onclick="toggleSidebar()">☰</button>
 
-    <!-- Overlay -->
-    <div class="overlay" onclick="closeSidebar()"></div>
+<!-- Overlay -->
+<div class="overlay" onclick="closeSidebar()"></div>
 
-    <!-- Sidebar -->
-    <nav class="sidebar">
-        <div class="sidebar-header">
-            <h2>Svatební menu</h2>
-            <p style="color: var(--text-light); opacity: 0.8;">21.09.2025</p>
-        </div>
-        <div class="sidebar-nav">
-            <ul>
-                <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
-                <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>
-                <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>
-<!--                <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>-->
-<!--                <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>-->
-            </ul>
-        </div>
-    </nav>
+<!-- Sidebar -->
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <h2>Svatební menu</h2>
+        <p style="color: var(--text-light); opacity: 0.8;">21.09.2025</p>
+    </div>
+    <div class="sidebar-nav">
+        <ul>
+            <li><a href="#" onclick="showPage('home')" class="active">Úvod</a></li>
+            <li><a href="#" onclick="showPage('schedule')">Harmonogram</a></li>
+            <li><a href="#" onclick="showPage('parking')">Příjezd</a></li>
+            <li><a href="#" onclick="showPage('seating')">Plán stolů</a></li>
+            <li><a href="#" onclick="showPage('gifts')">Svatební dary</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Main content -->
-    <main class="main-content">
-        <!-- Home page -->
-        <div id="home" class="page active">
-            <section class="hero">
-                <h1>Jája & Mikulda</h1>
-                <p class="subtitle"></p>
-                <p style="font-size: 1.2rem; color: var(--text-dark);">Pojďte s námi oslavit náš svatební den</p>
-            </section>
+<!-- Main content -->
+<main class="main-content">
+    <!-- Home page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <h1>Jája & Mikulda</h1>
+            <p class="subtitle"></p>
+            <p style="font-size: 1.2rem; color: var(--text-dark);">Pojďte s námi oslavit náš svatební den</p>
+        </section>
 
-            <!-- Countdown Widget -->
-            <div class="countdown-widget">
-                <div class="countdown-decorations">
-                    <div class="countdown-decoration center-left"></div>
-                </div>
-                <div class="countdown-container">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">0</span>
-                        <span class="countdown-label">Dní</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">0</span>
-                        <span class="countdown-label">Hodin</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">0</span>
-                        <span class="countdown-label">Minut</span>
-                    </div>
-                </div>
-                <p class="countdown-message" id="countdown-message"></p>
+        <!-- Countdown Widget -->
+        <div class="countdown-widget">
+            <div class="countdown-decorations">
+                <div class="countdown-decoration center-left"></div>
             </div>
-
-            <div class="wedding-details">
-                <div class="detail-card">
-                    <h3><i class="fa-solid fa-calendar"></i> Kdy</h3>
-                    <p><strong>Neděle 21.09.2025</strong></p>
-                    <p>Příjezd hostů od 11 hodin</p>
-                    <p>Svatební obřad od 12 hodin</p>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">0</span>
+                    <span class="countdown-label">Dní</span>
                 </div>
-
-                <div class="detail-card clickable" onclick="openVenueLink()">
-                    <h3><i class="fa-solid fa-location-dot"></i> Kde</h3>
-                    <p><strong>Yard Resort</strong></p>
-                    <p>Ke Tvrzi 7</p>
-                    <p>250 72 Předboj-Kojetice u Prahy</p>
-                    <p style="font-size: 0.9rem; color: var(--secondary-color); margin-top: 1rem; font-style: italic;">
-                        Klikni pro více informací
-                    </p>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">0</span>
+                    <span class="countdown-label">Hodin</span>
                 </div>
-
-                <div class="detail-card">
-                    <h3><i class="fa-solid fa-user-tie"></i> Dress Code</h3>
-                    <p><strong>Semi-formal</strong></p>
-                    <p>Venkovní obřad – pokud počasí dovolí</p>
-                    <p class="palette-label">Doporučené barvy</p>
-                    <div class="color-palette">
-                        <div class="color-swatch burgundy"></div>
-                        <div class="color-swatch burnt-orange"></div>
-                        <div class="color-swatch golden"></div>
-                        <div class="color-swatch brown"></div>
-                        <div class="color-swatch plum"></div>
-                        <div class="color-swatch forest-green"></div>
-                    </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">0</span>
+                    <span class="countdown-label">Minut</span>
                 </div>
             </div>
-
-
-            <div class="content-section">
-                <h2>Náš příběh</h2>
-                <!-- Couple Photo Section -->
-                <div class="couple-photo-container">
-                    <div class="story-decorations">
-                        <div class="story-decoration left-center"></div>
-                    </div>
-                    <div class="photo-frame">
-                        <img src="images/photo.JPEG"
-                             alt="Our photo"
-                             class="couple-photo"
-                        >
-                    </div>
-                </div>
-                <p>Všechno to začalo v roce 2017… – ne na romantické zasněžené střelnici, jak by se u biatlonu slušelo, ale v parku Parukářka, v sídle biatlonového klubu Kapslovna. Biatlon je sport, který nás oba provází už mnoho let. Od začátku jsme byli v celku nerozluční parťáci, co si psali od rána do večera a chodili spolu ven.</p>
-                <p>Janinka se do Mikuldy zamilovala téměř okamžitě – jenže Mikuláš to tehdy ještě neviděl (nebo nechtěl vidět) a zůstali jsme “jen” přátelé.</p>
-
-                <p>Pak ale přišel rok 2019 a s ním Mikuldova cesta do Anglie. Na rok odjel studovat pryč, a jak se říká – člověk někdy musí odejít daleko, aby uviděl to, co měl celou dobu přímo před sebou. Když se vrátil, bylo mu to jasné.</p>
-
-                <p>15. července 2020 (kolem jedné ráno!) Mikuláš napsal Janince zprávu, že je do ní zamilovaný. A od té chvíle jsme spolu.</p>
-
-                <p>Tedy, ještě jsme se to chvíli snažili utajit – třeba na soustředění v srpnu 2020, kde nám “tajná” láska vydržela asi den. Pak už to věděli všichni. A vlastně dobře – protože léto 2020 bylo začátkem naší společné cesty.</p>
-
-                <p><i>Od té doby jsme zvládli:</i></p>
-                <ul style="margin-left: 2em; margin-bottom: 1em;">
-                  <li>společně odmaturovat</li>
-                  <li>přestěhovat se a začít si budovat domov</li>
-                  <li>zažít první roky na vysoké škole i v práci</li>
-                  <li>stát se tetičkou a strejdou (a to hned dvakrát!)</li>
-                  <li>a hlavně – být si navzájem oporou ve všem, co život přinesl.</li>
-                </ul>
-
-                <p>A teď? Teď vás zveme, abyste s námi oslavili další kapitolu našeho příběhu. Protože to nejlepší nás teprve čeká.</p>
-            </div>
+            <p class="countdown-message" id="countdown-message"></p>
         </div>
 
-         <!-- Schedule page -->
-        <div id="schedule" class="page">
-            <div class="content-section">
-                <h2>Harmonogram</h2>
-                <div class="couple-photo-container">
-                    <div class="story-decorations">
-                        <div class="story-decoration right-center"></div>
-                    </div>
-                </div>
-                <div style="margin: 2rem 0; padding: 2rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                    <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; row-gap: 1rem;">
-                        <strong>11:00</strong><span>Příjezd hostů, welcome drink</span>
-                        <strong>12:00</strong><span>Svatební obřad</span>
-                        <strong>12:30</strong><span>Gratulace, špalír a hromadné focení</span>
-                        <strong>13:15</strong><span>Přesun k sýpce, rozbíjení talířku, usazení, proslov</span>
-                        <strong>13:30</strong><span>Svatební oběd</span>
-                        <strong>14:30</strong><span>Individuální focení novomanželů</span>
-                        <strong>15:30</strong><span>Krájení svatebního dortu</span>
-                        <strong>16:30</strong><span>Hod kyticí</span>
-                        <strong>17:00</strong><span>Svatební tanec novomanželů a večerní raut</span>
-                    </div>
-                </div>
-
-                <p><strong>Poznámka:</strong></p>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Obřad plánujeme konat venku, pokud to počasí dovolí. Oblečení si prosím zvolte s ohledem na tuto skutečnost.</li>
-                    <li>Ve večerních hodinách bude pokračovat volná zábava.</li>
-                </ul>
+        <div class="wedding-details">
+            <div class="detail-card">
+                <h3><i class="fa-solid fa-calendar"></i> Kdy</h3>
+                <p><strong>Neděle 21.09.2025</strong></p>
+                <p>Příjezd hostů od 11 hodin</p>
+                <p>Svatební obřad od 12 hodin</p>
             </div>
-        </div>
 
-        <!-- Parking page -->
-        <div id="parking" class="page">
-            <div class="content-section">
-                <h2>Příjezd</h2>
-                <div class="couple-photo-container">
-                    <div class="story-decorations">
-                        <div class="story-decoration right-center"></div>
-                    </div>
-                </div>
-                <div class="parking-container" style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
-                    <h4><strong>Parkování</strong></h4>
-                    <p>Doporučujeme příjezd na místo z ulice Báštecká, při kterém parkoviště najdete po pravé straně (viz. mapa níže).</p>
-                    <div class="map-wrapper">
-                        <iframe src="https://mapy.com/s/bafosopomo" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <ul style="margin: 1rem 0; padding-left: 2rem;">
-                    <li>Na místo se dá dopravit také autobusem z Ládví na zástávku Předboj, U rybníka (cca 30 minut).</li>
-                </ul>
-
-            </div>
-        </div>
-
-        <!-- Seating page -->
-        <div id="seating" class="page">
-            <div class="content-section">
-                <h2>Seating Arrangements</h2>
-                <p>We've carefully arranged the seating to ensure everyone has a wonderful time. Please find your assigned table below and look forward to meeting new friends and reconnecting with old ones.</p>
-
-                <div style="margin: 2rem 0; text-align: center;">
-                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Table Assignments</h3>
-                    <p><strong>Cocktail Hour:</strong> Open seating in the garden area</p>
-                    <p><strong>Dinner & Dancing:</strong> Assigned seating in the main hall</p>
-                </div>
-
-                <p>If you have any questions about your seating assignment or need to make special arrangements, please contact us before the wedding day. We want to ensure everyone is comfortable and can fully enjoy the celebration.</p>
-
-                <p style="text-align: center; margin-top: 2rem; font-style: italic; color: var(--secondary-color);">
-                    Detailed seating chart will be displayed at the venue entrance
+            <div class="detail-card clickable" onclick="openVenueLink()">
+                <h3><i class="fa-solid fa-location-dot"></i> Kde</h3>
+                <p><strong>Yard Resort</strong></p>
+                <p>Ke Tvrzi 7</p>
+                <p>250 72 Předboj-Kojetice u Prahy</p>
+                <p style="font-size: 0.9rem; color: var(--secondary-color); margin-top: 1rem; font-style: italic;">
+                    Klikni pro více informací
                 </p>
             </div>
-        </div>
 
-        <!-- Gifts page -->
-        <div id="gifts" class="page">
-            <div class="content-section">
-                <h2>Dary</h2>
-                <div class="couple-photo-container">
-                    <div class="story-decorations">
-                        <div class="story-decoration right-center"></div>
-                    </div>
-                </div>
-                <p>V obálce s pozvánkou naleznete doplňkovou kartičku na toto téma, raději však dáváme informace i zde.</p>
-                <div class="pdf-container">
-                    <div class="pdf-embed">
-                    </div>
+            <div class="detail-card">
+                <h3><i class="fa-solid fa-user-tie"></i> Dress Code</h3>
+                <p><strong>Semi-formal</strong></p>
+                <p>Venkovní obřad – pokud počasí dovolí</p>
+                <p class="palette-label">Doporučené barvy</p>
+                <div class="color-palette">
+                    <div class="color-swatch burgundy"></div>
+                    <div class="color-swatch burnt-orange"></div>
+                    <div class="color-swatch golden"></div>
+                    <div class="color-swatch brown"></div>
+                    <div class="color-swatch plum"></div>
+                    <div class="color-swatch forest-green"></div>
                 </div>
             </div>
         </div>
-    </main>
 
-    <script>
-        let sidebarOpen = false;
 
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.overlay');
-            const menuToggle = document.querySelector('.menu-toggle');
+        <div class="content-section">
+            <h2>Náš příběh</h2>
+            <!-- Couple Photo Section -->
+            <div class="couple-photo-container">
+                <div class="story-decorations">
+                    <div class="story-decoration left-center"></div>
+                </div>
+                <div class="photo-frame">
+                    <img src="images/photo.JPEG"
+                         alt="Our photo"
+                         class="couple-photo"
+                    >
+                </div>
+            </div>
+            <p>Všechno to začalo v roce 2017… – ne na romantické zasněžené střelnici, jak by se u biatlonu slušelo, ale
+                v parku Parukářka, v sídle biatlonového klubu Kapslovna. Biatlon je sport, který nás oba provází už
+                mnoho let. Od začátku jsme byli v celku nerozluční parťáci, co si psali od rána do večera a chodili
+                spolu ven.</p>
+            <p>Janinka se do Mikuldy zamilovala téměř okamžitě – jenže Mikuláš to tehdy ještě neviděl (nebo nechtěl
+                vidět) a zůstali jsme “jen” přátelé.</p>
 
-            sidebarOpen = !sidebarOpen;
+            <p>Pak ale přišel rok 2019 a s ním Mikuldova cesta do Anglie. Na rok odjel studovat pryč, a jak se říká –
+                člověk někdy musí odejít daleko, aby uviděl to, co měl celou dobu přímo před sebou. Když se vrátil, bylo
+                mu to jasné.</p>
 
-            if (sidebarOpen) {
-                sidebar.classList.add('open');
-                overlay.classList.add('active');
-                menuToggle.classList.add('hidden');
-            } else {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('active');
-                menuToggle.classList.remove('hidden');
-            }
-        }
+            <p>15. července 2020 (kolem jedné ráno!) Mikuláš napsal Janince zprávu, že je do ní zamilovaný. A od té
+                chvíle jsme spolu.</p>
 
-        function closeSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.overlay');
-            const menuToggle = document.querySelector('.menu-toggle');
+            <p>Tedy, ještě jsme se to chvíli snažili utajit – třeba na soustředění v srpnu 2020, kde nám “tajná” láska
+                vydržela asi den. Pak už to věděli všichni. A vlastně dobře – protože léto 2020 bylo začátkem naší
+                společné cesty.</p>
 
-            sidebarOpen = false;
+            <p><i>Od té doby jsme zvládli:</i></p>
+            <ul style="margin-left: 2em; margin-bottom: 1em;">
+                <li>společně odmaturovat</li>
+                <li>přestěhovat se a začít si budovat domov</li>
+                <li>zažít první roky na vysoké škole i v práci</li>
+                <li>stát se tetičkou a strejdou (a to hned dvakrát!)</li>
+                <li>a hlavně – být si navzájem oporou ve všem, co život přinesl.</li>
+            </ul>
+
+            <p>A teď? Teď vás zveme, abyste s námi oslavili další kapitolu našeho příběhu. Protože to nejlepší nás
+                teprve čeká.</p>
+        </div>
+    </div>
+
+    <!-- Schedule page -->
+    <div id="schedule" class="page">
+        <div class="content-section">
+            <h2>Harmonogram</h2>
+            <div class="couple-photo-container">
+                <div class="story-decorations">
+                    <div class="story-decoration right-center"></div>
+                </div>
+            </div>
+            <div style="margin: 2rem 0; padding: 2rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: 1rem; row-gap: 1rem;">
+                    <strong>11:00</strong><span>Příjezd hostů, welcome drink</span>
+                    <strong>12:00</strong><span>Svatební obřad</span>
+                    <strong>12:30</strong><span>Gratulace, špalír a hromadné focení</span>
+                    <strong>13:15</strong><span>Přesun k sýpce, rozbíjení talířku, usazení, proslov</span>
+                    <strong>13:30</strong><span>Svatební oběd</span>
+                    <strong>14:30</strong><span>Individuální focení novomanželů</span>
+                    <strong>15:30</strong><span>Krájení svatebního dortu</span>
+                    <strong>16:30</strong><span>Hod kyticí</span>
+                    <strong>17:00</strong><span>Svatební tanec novomanželů a večerní raut</span>
+                </div>
+            </div>
+
+            <p><strong>Poznámka:</strong></p>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li>Obřad plánujeme konat venku, pokud to počasí dovolí. Oblečení si prosím zvolte s ohledem na tuto
+                    skutečnost.
+                </li>
+                <li>Ve večerních hodinách bude pokračovat volná zábava.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Parking page -->
+    <div id="parking" class="page">
+        <div class="content-section">
+            <h2>Příjezd</h2>
+            <div class="couple-photo-container">
+                <div class="story-decorations">
+                    <div class="story-decoration right-center"></div>
+                </div>
+            </div>
+            <div class="parking-container"
+                 style="margin: 1.5rem 0; padding: 1rem; background: rgba(139, 69, 19, 0.1); border-radius: 8px;">
+                <h4><strong>Parkování</strong></h4>
+                <p>Doporučujeme příjezd na místo z ulice Báštecká, při kterém parkoviště najdete po pravé straně (viz.
+                    mapa níže).</p>
+                <div class="map-wrapper">
+                    <iframe src="https://mapy.com/s/bafosopomo" allowfullscreen></iframe>
+                </div>
+            </div>
+            <ul style="margin: 1rem 0; padding-left: 2rem;">
+                <li>Na místo se dá dopravit také autobusem z Ládví na zástávku Předboj, U rybníka (cca 30 minut).</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Seating page -->
+    <div id="seating" class="page">
+        <div class="content-section">
+            <h2>Plán stolů</h2>
+            <div class="couple-photo-container">
+                <div class="story-decorations">
+                    <div class="story-decoration right-center"></div>
+                </div>
+            </div>
+            <p>Pro hladký průběh usazení hostů prosím zhlédněte zasedací pořádek níže. Na jednotlivých místech najdete
+                jmenovky, přesto bude dobré pamatovat si u kterého stolu sedíte.</p>
+
+            <div class="landscape-container">
+                <img src="images/adek.jpeg"
+                     alt="por"
+                     class="landscape-img"
+                >
+            </div>
+
+            <div class="landscape-container">
+                <img src="images/por.jpeg"
+                     alt="adek"
+                     class="landscape-img"
+                >
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Gifts page -->
+    <div id="gifts" class="page">
+        <div class="content-section">
+            <h2>Dary</h2>
+            <div class="couple-photo-container">
+                <div class="story-decorations">
+                    <div class="story-decoration right-center"></div>
+                </div>
+            </div>
+            <p>V obálce s pozvánkou naleznete doplňkovou kartičku na toto téma, pro jistotu ji máte i zde.</p>
+
+            <div class="couple-photo-container">
+                <div class="photo-frame">
+                    <img src="images/dary-1.png"
+                         alt="dar"
+                         class="couple-photo"
+                    >
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<script>
+    let sidebarOpen = false;
+
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        sidebarOpen = !sidebarOpen;
+
+        if (sidebarOpen) {
+            sidebar.classList.add('open');
+            overlay.classList.add('active');
+            menuToggle.classList.add('hidden');
+        } else {
             sidebar.classList.remove('open');
             overlay.classList.remove('active');
             menuToggle.classList.remove('hidden');
         }
+    }
 
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+    function closeSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+        const menuToggle = document.querySelector('.menu-toggle');
 
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
+        sidebarOpen = false;
+        sidebar.classList.remove('open');
+        overlay.classList.remove('active');
+        menuToggle.classList.remove('hidden');
+    }
 
-            // Update active menu item
-            const menuItems = document.querySelectorAll('.sidebar-nav a');
-            menuItems.forEach(item => item.classList.remove('active'));
-            event.target.classList.add('active');
+    function showPage(pageId) {
+        // Hide all pages
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active'));
 
-            // Close sidebar on mobile
-            closeSidebar();
-        }
+        // Show selected page
+        document.getElementById(pageId).classList.add('active');
 
-        // Countdown functionality
-        function updateCountdown() {
-            const weddingDate = new Date('September 21, 2025 12:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = weddingDate - now;
+        // Update active menu item
+        const menuItems = document.querySelectorAll('.sidebar-nav a');
+        menuItems.forEach(item => item.classList.remove('active'));
+        event.target.classList.add('active');
 
-            if (timeLeft > 0) {
-                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-                // const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        // Close sidebar on mobile
+        closeSidebar();
+    }
 
-                document.getElementById('days').textContent = days;
-                document.getElementById('hours').textContent = hours;
-                document.getElementById('minutes').textContent = minutes;
-                // document.getElementById('seconds').textContent = seconds;
+    // Countdown functionality
+    function updateCountdown() {
+        const weddingDate = new Date('September 21, 2025 12:00:00').getTime();
+        const now = new Date().getTime();
+        const timeLeft = weddingDate - now;
 
-                // Update message based on time remaining
-                if (days > 30) {
-                    document.getElementById('countdown-message').textContent = "Každou chvílí jsme blíže našemu svatebnímu dni. 🤍";
-                } else if (days > 7) {
-                    document.getElementById('countdown-message').textContent = "Náš den se blíží! Už se nemůžeme dočkat, až to s vámi oslavíme! 🤍";
-                } else if (days > 1) {
-                    document.getElementById('countdown-message').textContent = "Už jen pár dní a řekneme si své „ano“! 🤍";
-                } else if (days === 1) {
-                    document.getElementById('countdown-message').textContent = "Zítra jen ten den! Tešíme se na vás u oltáře. 🤍";
-                } else {
-                    document.getElementById('countdown-message').textContent = "Dnes je náš svatební den – pojďme slavit! 🤍";
-                }
+        if (timeLeft > 0) {
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+
+            // Update message based on time remaining
+            if (days > 30) {
+                document.getElementById('countdown-message').textContent = "Každou chvílí jsme blíže našemu svatebnímu dni. 🤍";
+            } else if (days > 7) {
+                document.getElementById('countdown-message').textContent = "Náš den se blíží! Už se nemůžeme dočkat, až to s vámi oslavíme! 🤍";
+            } else if (days > 1) {
+                document.getElementById('countdown-message').textContent = "Už jen pár dní a řekneme si své „ano“! 🤍";
+            } else if (days === 1) {
+                document.getElementById('countdown-message').textContent = "Zítra jen ten den! Tešíme se na vás u oltáře. 🤍";
             } else {
-                // Wedding day has passed
-                document.getElementById('days').textContent = "0";
-                document.getElementById('hours').textContent = "0";
-                document.getElementById('minutes').textContent = "0";
-                // document.getElementById('seconds').textContent = "0";
-                document.getElementById('countdown-message').textContent = "Jsme novomanželé! Děkujeme, že jste byli součástí našeho dne. 🤍";
-
+                document.getElementById('countdown-message').textContent = "Dnes je náš svatební den – pojďme slavit! 🤍";
             }
-        }
+        } else {
+            // Wedding day has passed
+            document.getElementById('days').textContent = "0";
+            document.getElementById('hours').textContent = "0";
+            document.getElementById('minutes').textContent = "0";
+            document.getElementById('countdown-message').textContent = "Jsme novomanželé! Děkujeme, že jste byli součástí našeho dne. 🤍";
 
-        // Update countdown immediately and then every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Venue link function
-        function openVenueLink() {
-            // Open Google Maps with the venue address
-            window.open('https://www.yardresort.com/index.php/', '_blank', 'noopener,noreferrer');
         }
-    </script>
+    }
+
+    // Update countdown immediately and then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Venue link function
+    function openVenueLink() {
+        // Open Google Maps with the venue address
+        window.open('https://www.yardresort.com/index.php/', '_blank', 'noopener,noreferrer');
+    }
+</script>
 </body>
 </html>
